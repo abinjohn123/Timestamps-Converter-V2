@@ -40,7 +40,7 @@ body {
 
 header {
   background-color: var(--cta-text);
-  padding: 2rem;
+  height: 4rem;
 }
 
 .app {
@@ -48,7 +48,7 @@ header {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 
   display: grid;
-  grid-template-columns: 350px 1fr 1fr;
+  grid-template-columns: 380px 1fr 1fr;
   height: 100%;
 }
 
@@ -84,7 +84,7 @@ header {
 }
 
 .adjustment-controls>label {
-  font-size: 2.4rem;
+  font-size: 3.4rem;
   color: var(--green-dark);
   cursor: pointer;
 }
