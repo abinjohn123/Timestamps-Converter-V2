@@ -18,7 +18,10 @@ function timeInputHandler(e) {
   const nextInputEl = document.querySelector(
     `[data-time="${currentInputEl + 1}"]`
   );
-  if (!nextInputEl) return;
+  if (!nextInputEl) {
+    e.target.blur();
+    return;
+  }
   nextInputEl.select();
 }
 
