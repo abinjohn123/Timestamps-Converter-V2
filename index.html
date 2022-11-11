@@ -10,9 +10,77 @@
   <body>
     <header>Time.move</header>
     <div class="app">
-      <div class="app-controls"></div>
-      <div class="app-editor"></div>
-      <div class="app-output"></div>
+      <section class="app-controls">
+        <div class="time-adjustment">
+          <h3 class="heading">time adjustment</h3>
+          <div class="adjustment-box">
+            <div class="adjustment-controls">
+              <label for="adj-operation">+</label>
+              <input type="checkbox" name="adj-operation" id="adj-operation" />
+            </div>
+            <div class="adjustment-inputs">
+              <input
+                size="2"
+                type="number"
+                name="hour-0"
+                id="hour-0"
+                min="0"
+                max="9"
+                placeholder="h"
+              />
+              <input
+                size="2"
+                type="number"
+                name="hour-1"
+                id="hour-1"
+                min="0"
+                max="9"
+                placeholder="h"
+              />
+              <span class="colon">:</span>
+              <input
+                size="2"
+                type="number"
+                name="minute-0"
+                id="minute-0"
+                min="0"
+                max="9"
+                placeholder="m"
+              />
+              <input
+                size="2"
+                type="number"
+                name="minute-1"
+                id="minute-1"
+                min="0"
+                max="9"
+                placeholder="m"
+              />
+              <span class="colon">:</span>
+              <input
+                size="2"
+                type="number"
+                name="second-0"
+                id="second-0"
+                min="0"
+                max="9"
+                placeholder="s"
+              />
+              <input
+                size="2"
+                type="number"
+                name="second-1"
+                id="second-1"
+                min="0"
+                max="9"
+                placeholder="s"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="app-editor"></section>
+      <section class="app-output"></section>
     </div>
   </body>
 </html>
