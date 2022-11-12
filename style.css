@@ -66,32 +66,82 @@ header {
 }
 
 .adjustment-box {
-  height: 100px;
-  padding: 1.5rem 1rem;
+  padding: 1.2rem;
   border: 2px solid var(--green-dark);
   box-shadow: 0 5px 50px hsl(174, 77%, 92%);
   border-radius: var(--rad-lg);
 
-  display: flex;
-  gap: 1rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 0.5rem;
+  row-gap: 1rem;
 }
 
 .adjustment-controls {
-  width: 30%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+
+
+  border: 1px solid var(--grey-dark);
+  border-radius: var(--rad-sm);
 }
 
-.adjustment-controls>label {
-  font-size: 3.4rem;
-  color: var(--green-dark);
+.btn-control {
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  border: none;
   cursor: pointer;
+
+  background-color: var(--grey-light);
 }
 
-#adj-operation {
-  display: none;
+.btn-control:first-child {
+  border-bottom: 1px solid var(--grey-dark);
+  border-top-left-radius: var(--rad-sm);
+  border-top-right-radius: var(--rad-sm);
 }
+
+.btn-control:last-child {
+  border-bottom-left-radius: var(--rad-sm);
+  border-bottom-right-radius: var(--rad-sm);
+}
+
+.control-icon {
+  width: 24px;
+  stroke: var(--grey-dark);
+}
+
+.btn-control.--selected {
+  background-color: var(--green-light);
+}
+
+.btn-control.--selected>.control-icon {
+  stroke: var(--green-dark);
+}
+
+.btn-clear {
+  grid-column: 1/-1;
+  justify-self: end;
+  cursor: pointer;
+
+  border: none;
+  background-color: var(--grey-light);
+  color: var(--text);
+
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+
+  text-decoration: none;
+}
+
+.btn-clear:hover {
+  text-decoration: underline;
+}
+
 
 
 
@@ -107,7 +157,7 @@ header {
   height: 100%;
   border-radius: var(--rad-sm);
   outline: none;
-  border: none;
+  border: 1px solid var(--grey-dark);
   background-color: var(--bg);
   text-align: center;
 }
