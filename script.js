@@ -1,9 +1,9 @@
+const timeInputsContainer = document.querySelector('.adjustment-inputs');
+
 // ##################################
 // auto focus input fields
 // for time input
 // ##################################
-
-const timeInputsContainer = document.querySelector('.adjustment-inputs');
 
 function timeInputHandler(e) {
   // check if input is valid
@@ -32,3 +32,15 @@ function timeFocusHandler(e) {
 
 timeInputsContainer.addEventListener('input', timeInputHandler);
 timeInputsContainer.addEventListener('focusin', timeFocusHandler);
+
+// ##################################
+// clear button to clear all inputs
+// ##################################
+const btnClear = document.querySelector('.btn-clear');
+
+function clearInputs() {
+  const inputs = timeInputsContainer.querySelectorAll('input[type="number"]');
+  inputs.forEach((input) => (input.value = ''));
+}
+
+btnClear.addEventListener('click', clearInputs);
