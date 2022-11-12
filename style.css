@@ -51,7 +51,7 @@ header {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 
   display: grid;
-  grid-template-columns: 380px 1fr 1fr;
+  grid-template-columns: 1fr 380px 1fr;
   flex-basis: 100%
 }
 
@@ -71,7 +71,7 @@ header {
 .adjustment-box {
   padding: 1.2rem;
   border: 2px solid var(--green-dark);
-  box-shadow: 0 5px 50px hsl(174, 77%, 92%);
+  box-shadow: 0 5px 50px hsl(174, 77%, 89%);
   border-radius: var(--rad-lg);
 
 
@@ -182,7 +182,7 @@ input[type=number] {
 /* ################ */
 /* EDITOR */
 /* ################ */
-.app-editor {
+.app-text-section {
   padding: 2rem;
 
   display: flex;

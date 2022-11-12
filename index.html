@@ -10,6 +10,14 @@
   <body>
     <header>Time.shift</header>
     <div class="app">
+      <section class="app-text-section">
+        <h3 class="heading">editor</h3>
+        <textarea
+          class="textbox --input"
+          name="input-text"
+          id="input-text"
+        ></textarea>
+      </section>
       <section class="app-controls">
         <div class="time-adjustment">
           <h3 class="heading">time adjustment</h3>
@@ -110,15 +118,10 @@
           </div>
         </div>
       </section>
-      <section class="app-editor">
-        <h3 class="heading">editor</h3>
-        <textarea
-          class="textbox --input"
-          name="input-text"
-          id="input-text"
-        ></textarea>
+      <section class="app-text-section">
+        <h3 class="heading">adjusted</h3>
+        <pre class="textbox"></pre>
       </section>
-      <section class="app-output"></section>
     </div>
     <script src="script.js" type="text/javascript"></script>
   </body>
