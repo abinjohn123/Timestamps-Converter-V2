@@ -1,5 +1,20 @@
 // State variables
 let adjustmentType = -1;
+let masterData = [];
+
+function setMasterData(text) {
+  masterData = text
+    .replaceAll('\r', '')
+    .split('\n')
+    .map((line) => {
+      const timestamp = (line.match(/\d{0,2}:{0,1}\d{1,2}:\d{1,2}/) || [
+        null,
+      ])[0];
+      const index = line.indexOf(timestamp);
+      const string = line.replace(timestamp, '');
+      return { index, timestamp, string };
+    });
+}
 
 // ##################################
 // auto focus input fields
@@ -62,3 +77,32 @@ function setAdjustmentType(e) {
 }
 
 adjustmentBtns.addEventListener('click', setAdjustmentType);
+
+// ########################################
+// handle clipboard paste to input field
+// ########################################
+const inputTextEl = document.querySelector('.textbox.--input');
+
+function renderInput() {
+  masterData.forEach((entry) => {
+    const line = document.createElement('p');
+
+    const textBefore = entry.string.slice(0, entry.index);
+    const timestamp = entry.timestamp
+      ? `<span class="timestamp">${entry.timestamp}</span>`
+      : '';
+    const textAfter = entry.string.slice(entry.index);
+    line.innerHTML = `${textBefore}${timestamp}${textAfter}`;
+
+    inputTextEl.append(line);
+  });
+}
+
+function inputPasteHandler(e) {
+  e.preventDefault();
+  const pasteContent = e.clipboardData.getData('text');
+  setMasterData(pasteContent);
+  renderInput();
+}
+
+inputTextEl.addEventListener('paste', inputPasteHandler);
