@@ -126,19 +126,34 @@ header {
   stroke: var(--green-dark);
 }
 
-.btn-clear {
+.adjustment-btns {
   grid-column: 1/-1;
   justify-self: end;
+}
+
+.adjustment-btns button {
   cursor: pointer;
-
   border: none;
-  background-color: var(--grey-light);
-  color: var(--text);
-
   font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: 1.2px;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--rad-sm);
+}
 
+.btn-shift {
+  color: var(--cta-text);
+  background-color: var(--text);
+  transition: color 0.3s;
+}
+
+.btn-shift:hover {
+  color: var(--white);
+}
+
+.btn-clear {
+  background-color: var(--grey-light);
+  color: var(--text);
   text-decoration: none;
 }
 
