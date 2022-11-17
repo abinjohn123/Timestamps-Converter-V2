@@ -7,9 +7,13 @@ function setMasterData(text) {
     .replaceAll('\r', '')
     .split('\n')
     .map((line) => {
-      const timestamp = (line.match(/\d{0,2}:{0,1}\d{1,2}:\d{1,2}/) || [
+      // const timestamp = (line.match(/\d{0,2}:{0,1}\d{1,2}:\d{1,2}/) || [
+      //   null,
+      // ])[0];
+      const timestamp = (line.match(/(?:\d{0,2}:\d{2}|\d{1,2}):\d{1,2}/) || [
         null,
       ])[0];
+
       const index = line.indexOf(timestamp);
       const string = line.replace(timestamp, '');
       return { index, timestamp, string };
@@ -104,5 +108,15 @@ function inputPasteHandler(e) {
   setMasterData(pasteContent);
   renderInput();
 }
-
 inputTextEl.addEventListener('paste', inputPasteHandler);
+
+// ########################################
+// handle manual edit to input content
+// ########################################
+function inputEditHandler() {
+  setMasterData(inputTextEl.innerText);
+  inputTextEl.innerHTML = '';
+  renderInput();
+}
+
+inputTextEl.addEventListener('input', inputEditHandler);
