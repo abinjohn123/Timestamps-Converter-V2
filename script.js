@@ -3,6 +3,11 @@ let adjustmentType = -1;
 let masterData = [];
 
 function setMasterData(text) {
+  if (text.trim() === '') {
+    masterData = [];
+    return;
+  }
+
   masterData = text
     .replaceAll('\r', '')
     .split('\n')
@@ -18,6 +23,8 @@ function setMasterData(text) {
       const string = line.replace(timestamp, '');
       return { index, timestamp, string };
     });
+
+  console.log(masterData);
 }
 
 // ##################################
@@ -79,17 +86,32 @@ function setAdjustmentType(e) {
     .querySelectorAll('.btn-control')
     .forEach((btn) => btn.classList.toggle('--selected', btn === targetBtn));
 }
-
 adjustmentBtns.addEventListener('click', setAdjustmentType);
+document
+  .querySelector(`.btn-control[value="${adjustmentType}"]`)
+  .classList.add('--selected');
 
 // ########################################
-// handle clipboard paste to input field
+// shift button click
 // ########################################
+const shiftBtn = document.querySelector('.btn-shift');
 const inputTextEl = document.querySelector('.textbox.--input');
 
-function renderInput() {
-  masterData.forEach((entry) => {
+function handleShift() {
+  setMasterData(inputTextEl.value);
+}
+
+shiftBtn.addEventListener('click', handleShift);
+
+// ########################################
+// render output
+// ########################################
+const outputTextEl = document.querySelector('.textbox.--output');
+
+function renderOutput() {
+  masterData.forEach((entry, i) => {
     const line = document.createElement('p');
+    line.id = `line-${i}`;
 
     const textBefore = entry.string.slice(0, entry.index);
     const timestamp = entry.timestamp
@@ -98,25 +120,6 @@ function renderInput() {
     const textAfter = entry.string.slice(entry.index);
     line.innerHTML = `${textBefore}${timestamp}${textAfter}`;
 
-    inputTextEl.append(line);
+    outputTextEl.append(line);
   });
 }
-
-function inputPasteHandler(e) {
-  e.preventDefault();
-  const pasteContent = e.clipboardData.getData('text');
-  setMasterData(pasteContent);
-  renderInput();
-}
-inputTextEl.addEventListener('paste', inputPasteHandler);
-
-// ########################################
-// handle manual edit to input content
-// ########################################
-function inputEditHandler() {
-  setMasterData(inputTextEl.innerText);
-  inputTextEl.innerHTML = '';
-  renderInput();
-}
-
-inputTextEl.addEventListener('input', inputEditHandler);
