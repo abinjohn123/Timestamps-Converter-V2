@@ -1,14 +1,13 @@
-export function timeToSeconds(timeArray) {
-  const [HH, MM, SS] = timeArray.reduce(
-    (acc, el, i) => {
-      const reducedIndex = Math.floor(i / 2);
-      acc[reducedIndex] += i % 2 === 0 ? el * 10 : el;
+export function timeToSeconds(timeString) {
+  const [HH, MM, SS] = timeString.split(':').reduce(
+    (acc, cur, i) => {
+      acc[i] = Number(cur);
       return acc;
     },
     [0, 0, 0]
   );
-  console.log(HH, MM, SS);
 
+  console.log(HH, MM, SS);
   // return 0 if timestamp is invalid
   if (HH > 23 || MM > 59 || SS > 59) return false;
 

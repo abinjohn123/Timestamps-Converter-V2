@@ -100,15 +100,29 @@ document
 const shiftBtn = document.querySelector('.btn-shift');
 const inputTextEl = document.querySelector('.textbox.--input');
 
+function getShiftTime() {
+  const timeInputDigits = [
+    ...timeInputsContainer.querySelectorAll('input[type="number"]'),
+  ];
+  let timeInputString = '';
+
+  timeInputString = timeInputDigits.reduce((string, el, i, arr) => {
+    const digitAtPos = Number.parseInt(el.value) || 0;
+    string += digitAtPos;
+    if (i % 2 === 1 && i !== arr.length - 1) string += ':';
+    return string;
+  }, '');
+
+  return timeInputString;
+}
+
 function handleShift() {
   setMasterData(inputTextEl.value);
-  const timeInputEls = [
-    ...timeInputsContainer.querySelectorAll('input[type="number"]'),
-  ].map((el) => Number.parseInt(el.value) || 0);
+  const shiftTime = getShiftTime();
 
-  const totalSeconds = timeToSeconds(timeInputEls);
-  if (!totalSeconds) console.log('invalid time');
+  const totalSeconds = timeToSeconds(shiftTime);
   if (totalSeconds === 0) return;
+  if (!totalSeconds) console.log('invalid time');
 }
 
 shiftBtn.addEventListener('click', handleShift);
