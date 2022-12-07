@@ -1,3 +1,5 @@
+import { timeToSeconds, secondsToTime } from './conversions.js';
+
 // State variables
 let adjustmentType = -1;
 let masterData = [];
@@ -87,6 +89,7 @@ function setAdjustmentType(e) {
     .forEach((btn) => btn.classList.toggle('--selected', btn === targetBtn));
 }
 adjustmentBtns.addEventListener('click', setAdjustmentType);
+// select one button at the start
 document
   .querySelector(`.btn-control[value="${adjustmentType}"]`)
   .classList.add('--selected');
@@ -99,6 +102,13 @@ const inputTextEl = document.querySelector('.textbox.--input');
 
 function handleShift() {
   setMasterData(inputTextEl.value);
+  const timeInputEls = [
+    ...timeInputsContainer.querySelectorAll('input[type="number"]'),
+  ].map((el) => Number.parseInt(el.value) || 0);
+
+  const totalSeconds = timeToSeconds(timeInputEls);
+  if (!totalSeconds) console.log('invalid time');
+  if (totalSeconds === 0) return;
 }
 
 shiftBtn.addEventListener('click', handleShift);
