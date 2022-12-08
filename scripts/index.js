@@ -154,18 +154,18 @@ function renderOutput() {
 
   for (let i = 0; i < masterData.length; ++i) {
     const entry = masterData[i];
-    if (entry.index === -1) return;
-
     const line = document.createElement('p');
     line.id = `line-${i}`;
 
-    const textBefore = entry.string.slice(0, entry.index);
-    const timestamp = entry.timestamp
-      ? `<span class="timestamp">${entry.timestamp}</span>`
-      : '';
-    const textAfter = entry.string.slice(entry.index);
-    line.innerHTML = `${textBefore}${timestamp}${textAfter}`;
-
+    if (entry.index === -1) line.innerHTML = `${entry.string}`;
+    else {
+      const textBefore = entry.string.slice(0, entry.index);
+      const timestamp = entry.timestamp
+        ? `<span class="timestamp">${entry.timestamp}</span>`
+        : '';
+      const textAfter = entry.string.slice(entry.index);
+      line.innerHTML = `${textBefore}${timestamp}${textAfter}`;
+    }
     outputTextEl.append(line);
   }
 }
