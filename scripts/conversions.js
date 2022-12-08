@@ -1,13 +1,17 @@
 export function timeToSeconds(timeString) {
-  const [HH, MM, SS] = timeString.split(':').reduce(
-    (acc, cur, i) => {
-      acc[i] = Number(cur);
-      return acc;
-    },
-    [0, 0, 0]
-  );
+  if (!timeString) return null;
 
-  console.log(HH, MM, SS);
+  const [SS, MM, HH] = timeString
+    .split(':')
+    .reverse()
+    .reduce(
+      (acc, cur, i) => {
+        acc[i] = Number(cur);
+        return acc;
+      },
+      [0, 0, 0]
+    );
+
   // return 0 if timestamp is invalid
   if (HH > 23 || MM > 59 || SS > 59) return false;
 

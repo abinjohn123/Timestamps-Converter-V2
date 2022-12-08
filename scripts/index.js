@@ -25,8 +25,6 @@ function setMasterData(text) {
       const string = line.replace(timestamp, '');
       return { index, timestamp, string };
     });
-
-  console.log(masterData);
 }
 
 // ##################################
@@ -100,6 +98,23 @@ document
 const shiftBtn = document.querySelector('.btn-shift');
 const inputTextEl = document.querySelector('.textbox.--input');
 
+function makeAdjustments(adjustment) {
+  masterData.forEach((entry) => {
+    const timestampInSeconds = timeToSeconds(entry.timestamp);
+
+    if (adjustmentType === -1 && adjustment > timestampInSeconds)
+      entry.timestamp = 'XX:XX';
+    else {
+      const newTimestamp = secondsToTime(
+        timestampInSeconds + adjustment * adjustmentType
+      );
+      entry.timestamp = newTimestamp;
+    }
+  });
+
+  console.log(masterData);
+}
+
 function getShiftTime() {
   const timeInputDigits = [
     ...timeInputsContainer.querySelectorAll('input[type="number"]'),
@@ -123,6 +138,8 @@ function handleShift() {
   const totalSeconds = timeToSeconds(shiftTime);
   if (totalSeconds === 0) return;
   if (!totalSeconds) console.log('invalid time');
+
+  makeAdjustments(totalSeconds);
 }
 
 shiftBtn.addEventListener('click', handleShift);
