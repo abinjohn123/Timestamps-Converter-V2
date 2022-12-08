@@ -111,8 +111,6 @@ function makeAdjustments(adjustment) {
       entry.timestamp = newTimestamp;
     }
   });
-
-  console.log(masterData);
 }
 
 function getShiftTime() {
@@ -140,6 +138,7 @@ function handleShift() {
   if (!totalSeconds) console.log('invalid time');
 
   makeAdjustments(totalSeconds);
+  renderOutput();
 }
 
 shiftBtn.addEventListener('click', handleShift);
@@ -150,7 +149,13 @@ shiftBtn.addEventListener('click', handleShift);
 const outputTextEl = document.querySelector('.textbox.--output');
 
 function renderOutput() {
-  masterData.forEach((entry, i) => {
+  console.log(masterData);
+  outputTextEl.innerHTML = '';
+
+  for (let i = 0; i < masterData.length; ++i) {
+    const entry = masterData[i];
+    if (entry.index === -1) return;
+
     const line = document.createElement('p');
     line.id = `line-${i}`;
 
@@ -162,5 +167,5 @@ function renderOutput() {
     line.innerHTML = `${textBefore}${timestamp}${textAfter}`;
 
     outputTextEl.append(line);
-  });
+  }
 }
