@@ -97,6 +97,7 @@ document
 // ########################################
 const shiftBtn = document.querySelector('.btn-shift');
 const inputTextEl = document.querySelector('.textbox.--input');
+const adjustmentBox = document.querySelector('.adjustment-box');
 
 function makeAdjustments(adjustment) {
   masterData.forEach((entry) => {
@@ -135,7 +136,12 @@ function handleShift() {
 
   const totalSeconds = timeToSeconds(shiftTime);
   if (totalSeconds === 0) return;
-  if (!totalSeconds) console.log('invalid time');
+  if (!totalSeconds) {
+    clearOutput();
+    adjustmentBox.classList.add('--error');
+    return;
+  }
+  adjustmentBox.classList.remove('--error');
 
   makeAdjustments(totalSeconds);
   renderOutput();
@@ -148,9 +154,13 @@ shiftBtn.addEventListener('click', handleShift);
 // ########################################
 const outputTextEl = document.querySelector('.textbox.--output');
 
+function clearOutput() {
+  outputTextEl.innerHTML = '';
+}
+
 function renderOutput() {
   console.log(masterData);
-  outputTextEl.innerHTML = '';
+  clearOutput();
 
   for (let i = 0; i < masterData.length; ++i) {
     const entry = masterData[i];

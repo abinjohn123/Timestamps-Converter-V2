@@ -7,6 +7,7 @@
   --accent-bg: hsl(14, 92%, 95%);
   --accent-text: hsl(15, 100%, 70%);
   --cta-text: hsl(226, 100%, 87%);
+  --error: hsl(0, 85%, 62%);
 
   /* Neutral */
   --white: hsl(0, 0%, 100%);
@@ -80,6 +81,13 @@ header {
   grid-template-columns: 1fr 1fr;
   column-gap: 0.5rem;
   row-gap: 1rem;
+
+  transition: border-color 0.3s box-shadow .3s;
+}
+
+.--error {
+  border-color: var(--error);
+  box-shadow: 0 5px 50px hsl(0, 71%, 94%);
 }
 
 .adjustment-controls {
