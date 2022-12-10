@@ -305,3 +305,19 @@ input[type=number] {
 .textbox:focus {
   outline: none;
 }
+
+.textbox::-webkit-scrollbar {
+  width: 10px;
+  height: auto;
+}
+
+.textbox::-webkit-scrollbar-track {
+  background: var(--grey-light);
+  border-radius: var(--rad-lg);
+
+}
+
+.textbox::-webkit-scrollbar-thumb {
+  background-color: var(--grey-dark);
+  border-radius: var(--rad-lg);
+}
