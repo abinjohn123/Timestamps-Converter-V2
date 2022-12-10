@@ -99,6 +99,7 @@ header {
 .adjustment-controls {
   display: grid;
   grid-template-columns: 1fr;
+  max-width: 40px;
 
 
   border: 1px solid var(--grey-dark);
@@ -108,7 +109,6 @@ header {
 .btn-control {
   display: block;
   height: 100%;
-  max-width: 50px;
 
   border: none;
   cursor: pointer;
@@ -364,6 +364,7 @@ input[type=number] {
   .adjustment-box {
     max-width: 340px;
     align-self: center;
+    padding: 0.8rem;
   }
 
 
