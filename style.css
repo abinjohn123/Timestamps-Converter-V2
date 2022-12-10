@@ -230,13 +230,8 @@ input[type=number] {
 }
 
 .format-btn.clicked {
-  background-color: hsl(223, 50%, 90%);
-}
-
-.format-btn:hover {
   background-color: var(--grey-dark);
 }
-
 
 .format-identifier {
   font-size: 2rem;
@@ -351,12 +346,20 @@ input[type=number] {
     grid-column: 1/-1;
     order: -1;
     flex-direction: column;
+    padding: 1rem;
   }
 
   .time-adjustment,
   .timestamp-format {
     flex-basis: auto;
-    width: 340px;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .adjustment-box {
+    max-width: 340px;
+    align-self: center;
   }
 
 
