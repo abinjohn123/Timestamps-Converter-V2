@@ -159,8 +159,10 @@ function clearOutput() {
 }
 
 function renderOutput() {
-  console.log(masterData);
   clearOutput();
+
+  let allFormats = [...document.querySelectorAll('.format-btn.clicked')];
+  allFormats = allFormats.map((formatEl) => formatEl.dataset.format);
 
   for (let i = 0; i < masterData.length; ++i) {
     const entry = masterData[i];
@@ -171,7 +173,9 @@ function renderOutput() {
     else {
       const textBefore = entry.string.slice(0, entry.index);
       const timestamp = entry.timestamp
-        ? `<span class="timestamp">${entry.timestamp}</span>`
+        ? `<span class="timestamp ${allFormats.join(' ')}">${
+            entry.timestamp
+          }</span>`
         : '';
       const textAfter = entry.string.slice(entry.index);
       line.innerHTML = `${textBefore}${timestamp}${textAfter}`;
@@ -179,3 +183,17 @@ function renderOutput() {
     outputTextEl.append(line);
   }
 }
+
+// ########################################
+// format timestamps
+// ########################################
+const formatContainer = document.querySelector('.format-box');
+
+function formatTimestamps(e) {
+  if (e.target.classList.contains('format-box')) return;
+  const formatType = e.target.closest('.format-btn');
+  formatType.classList.toggle('clicked');
+  renderOutput();
+}
+
+formatContainer.addEventListener('click', formatTimestamps);

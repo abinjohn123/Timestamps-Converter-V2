@@ -257,19 +257,20 @@ input[type=number] {
   font-size: 1.3rem;
 }
 
-[data-format="bold"]>.format-identifier {
+[data-format="bold"]>.format-identifier,
+.bold {
   font-weight: 700;
 }
 
-[data-format="italics"]>.format-identifier {
+[data-format="italic"]>.format-identifier,
+.italic {
   font-style: italic;
 }
 
-[data-format="underline"]>.format-identifier {
+[data-format="underline"]>.format-identifier,
+.underline {
   text-decoration: underline;
 }
-
-
 
 
 /* ################ */
