@@ -77,6 +77,10 @@ header {
 .app-controls {
   background-color: var(--grey-light);
   padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .heading {
@@ -148,7 +152,7 @@ header {
 }
 
 .adjustment-btns {
-  grid-column: 1/-1;
+  grid-column: 2/3;
   justify-self: end;
 }
 
@@ -212,6 +216,61 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+/* ################ */
+/* FORMATTER */
+/* ################ */
+
+.format-box {
+  display: flex;
+  gap: 0.7rem;
+
+}
+
+.format-btn {
+  border: 1px solid var(--grey-dark);
+  background-color: var(--bg);
+  flex-basis: 100%;
+
+  padding: 1rem;
+  font-family: 'Manrope', sans-serif;
+  color: var(--text);
+  border-radius: var(--rad-sm);
+  cursor: pointer;
+
+  transition: background-color 0.2s;
+}
+
+.format-btn.clicked {
+  background-color: hsl(223, 50%, 90%);
+}
+
+.format-btn:hover {
+  background-color: var(--grey-dark);
+}
+
+
+.format-identifier {
+  font-size: 2rem;
+}
+
+.format-helper {
+  font-size: 1.3rem;
+}
+
+[data-format="bold"]>.format-identifier {
+  font-weight: 700;
+}
+
+[data-format="italics"]>.format-identifier {
+  font-style: italic;
+}
+
+[data-format="underline"]>.format-identifier {
+  text-decoration: underline;
+}
+
+
+
 
 /* ################ */
 /* EDITOR */
@@ -241,8 +300,6 @@ input[type=number] {
   overflow-y: scroll;
   resize: none;
 }
-
-
 
 .textbox:focus {
   outline: none;
