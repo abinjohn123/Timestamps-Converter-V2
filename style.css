@@ -59,17 +59,6 @@ header {
   overflow: hidden;
 }
 
-@media only screen and (max-width: 1200px) {
-  .app {
-    grid-template-columns: 380px 1fr;
-    grid-template-rows: 1fr 1fr;
-  }
-
-  .app-controls {
-    grid-row: 1/-1;
-  }
-}
-
 /* ############### */
 /* APP CONTROLS */
 /* ############### */
@@ -320,4 +309,58 @@ input[type=number] {
 .textbox::-webkit-scrollbar-thumb {
   background-color: var(--grey-dark);
   border-radius: var(--rad-lg);
+}
+
+
+@media only screen and (max-width: 1200px) {
+  .app {
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .app-controls {
+    grid-column: 1/-1;
+    order: -1;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .time-adjustment,
+  .timestamp-format {
+    flex-basis: 340px;
+  }
+
+
+  .app-text-section {
+    padding: 1rem;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  body {
+    height: auto;
+    font-size: 1.4rem;
+  }
+
+  .app {
+    grid-template-rows: auto 500px 500px;
+    grid-template-columns: 1fr;
+  }
+
+  .app-controls {
+    grid-column: 1/-1;
+    order: -1;
+    flex-direction: column;
+  }
+
+  .time-adjustment,
+  .timestamp-format {
+    flex-basis: auto;
+    width: 340px;
+  }
+
+
+  .app-text-section {
+    padding: 1rem;
+  }
 }
