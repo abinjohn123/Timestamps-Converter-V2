@@ -15,6 +15,7 @@
   --grey-light: hsl(224, 65%, 95%);
   --grey-dark: hsl(223, 50%, 87%);
   --text: hsl(227, 35%, 25%);
+  --textbox: #000;
 
   /* Numbers */
   --rad-sm: 4px;
@@ -230,6 +231,8 @@ input[type=number] {
 
   border-radius: var(--rad-lg);
   border: 1px solid var(--grey-dark);
+  color: var(--textbox);
+
 
   padding: 1rem;
   font-size: 1.4rem;
@@ -240,13 +243,7 @@ input[type=number] {
 }
 
 
+
 .textbox:focus {
   outline: none;
-}
-
-.timestamp {
-  background-color: var(--accent-bg);
-  color: var(--accent-text);
-  padding: 0 0.5rem;
-  border-radius: 5000px;
 }

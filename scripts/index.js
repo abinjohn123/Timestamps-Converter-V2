@@ -167,7 +167,7 @@ function renderOutput() {
     const line = document.createElement('p');
     line.id = `line-${i}`;
 
-    if (entry.index === -1) line.innerHTML = `${entry.string}`;
+    if (entry.index === -1) line.innerHTML = `&nbsp;`;
     else {
       const textBefore = entry.string.slice(0, entry.index);
       const timestamp = entry.timestamp
