@@ -296,7 +296,7 @@ input[type=number] {
 }
 
 .textbox::-webkit-scrollbar-track {
-  background: var(--grey-light);
+  background: var(--bg);
   border-radius: var(--rad-lg);
 
 }
