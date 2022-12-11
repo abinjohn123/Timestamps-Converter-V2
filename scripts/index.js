@@ -182,10 +182,10 @@ function renderOutput() {
     }
     outputTextEl.append(line);
   }
-
-  document
-    .querySelector('.textbox.--output')
-    .scrollIntoView({ behavior: 'smooth' });
+  window.scrollTo({
+    top: 580,
+    behavior: 'smooth',
+  });
 }
 
 // ########################################
