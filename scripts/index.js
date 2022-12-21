@@ -201,3 +201,16 @@ function formatTimestamps(e) {
 }
 
 formatContainer.addEventListener('click', formatTimestamps);
+
+// ########################################
+// init
+// ########################################
+
+const sampleInput = `(00:00) This is a sample text content
+(02:06) A timestamp can be placed anywhere in a line
+(07:55) However, multiple timestamps per line are not detected
+(12:14) Time can be both added and subtracted from the input timestamps
+(14:45) Go ahead and start converting!
+`;
+
+document.querySelector('.textbox.--input').value = sampleInput;
